@@ -1,25 +1,32 @@
-# The following code is a modification of the moment of inertia
-# model with contiguity as described by Dr. Austin Buchanan,
+# The following code is a simple modification of the moment of inertia \n
+# model with contiguity as described by Dr. Austin Buchanan, \n
 # which can be found here: https://bit.ly/3NMgfQE 
 
-#Dependencies
+######### START DEPENDENCIES #########
+
+#gerrychain for parsing JSON files 
 from gerrychain import Graph
+#geopy for retrieving geodata on county names
 from geopy.distance import geodesic
+#gurobi/networkx for IP purposes
 import gurobipy as gp
 from gurobipy import GRB
 import networkx as nx
-import geopandas as gpan
-
+#geopandas to make our fun little map at the end :)
+import geopandas as gpd
+#for rounding functions relating to population bounds
 import math
 
+######### END DEPENDENCIES ###########
 
-# Read Oklahoma county graph from the json file "OK_county.json"
-filepath = 'districting-data\\'
-filename = 'OK_county.json'
+#Parse population/county data with gerrychain
+filepath = 'pop_data\\'
+filename = 'NE_county.json'
 
-# GerryChain has a built-in function for reading graphs of this type:
+#Instantiating graph, gerrychain style (not with NetworkX)
 G = Graph.from_json( filepath + filename )
 
+#adding graph vertices (nodes)
 for node in G.nodes:
     G.nodes[node]['TOTPOP'] = G.nodes[node]['P0010001'] # population of county
     G.nodes[node]['C_X'] = G.nodes[node]['INTPTLON20']  # longitude of county's center
@@ -33,65 +40,68 @@ for i in G.nodes:
         loc_j = ( G.nodes[j]['C_Y'], G.nodes[j]['C_X'] )
         dist[i,j] = geodesic(loc_i,loc_j).miles
 
-# Let's impose a 2% population deviation (+/-1%)
+#2% population deviation (+/-1%) used in this model
 deviation = 0.02
 
-k = 5          # number of districts
+#Nebraska has 3 districts therefore k = 3
+k = 3
 total_population = sum( G.nodes[node]['TOTPOP'] for node in G.nodes)
-
+dev_val = total_population * deviation
 L = math.ceil( ( 1 - deviation / 2 ) * total_population / k )
 U = math.floor( ( 1 + deviation / 2 ) * total_population / k )
-print("Using L =",L,"and U =",U,"and k =",k)
+print
 
 # create model 
 m = gp.Model()
 
-# create x[i,j] variable which equals one when county i 
-#    is assigned to (the district centered at) county j
+#x[i,j] is a binary variable for county i and district* j \n
+#*j is actually a county but is representative of the district that
+# it is the center of.
+
+#x is 1 when the county is assigned to a district
 x = m.addVars( G.nodes, G.nodes, vtype=GRB.BINARY )
 
-# add constraints saying that each county i is assigned to one district
+m.setObjective( gp.quicksum( dist[i,j] * dist[i,j] * G.nodes[i]['TOTPOP'] * x[i,j] for i in G.nodes for j in G.nodes ), GRB.MINIMIZE )
+#Each county i is only assigned to one district j
 m.addConstrs( gp.quicksum( x[i,j] for j in G.nodes ) == 1 for i in G.nodes )
 
-# add constraint saying there should be k district centers
+#there are k centers representing k districts
 m.addConstr( gp.quicksum( x[j,j] for j in G.nodes ) == k )
 
-# add constraints that say: if j roots a district, then its population is between L and U.
+#if j is the center of a district, its population is between the lower and upper population bounds.
 m.addConstrs( gp.quicksum( G.nodes[i]['TOTPOP'] * x[i,j] for i in G.nodes ) >= L * x[j,j] for j in G.nodes )
 m.addConstrs( gp.quicksum( G.nodes[i]['TOTPOP'] * x[i,j] for i in G.nodes ) <= U * x[j,j] for j in G.nodes )
 
-# add coupling constraints saying that if i is assigned to j, then j is a center.
+#if i is assigned to j, then j is a center.
 m.addConstrs( x[i,j] <= x[j,j] for i in G.nodes for j in G.nodes )
 
 m.update()
 
+# This is where we impose contiguity constraints on the model
 DG = nx.DiGraph(G)
 
-# add flow variables
-#    f[i,j,v] = flow across arc (i,j) that is sent from souce/root v
-f = m.addVars( DG.edges, G.nodes ) 
+# add flow variables. What are flow variables you ask? read the above paper or
+# our final report to better understand.
 
-# add constraints saying that if node i is assigned to node j, 
-#   then node i must consume one unit of node j's flow
+# f[i,j,v] = flow across arc (i,j) that is sent from source/root v
+f = m.addVars(DG.edges, G.nodes) 
+
+# if node i is assigned to node j, 
+# then node i must consume one unit of node j's flow
 m.addConstrs( gp.quicksum( f[u,i,j] - f[i,u,j] for u in G.neighbors(i) ) == x[i,j] for i in G.nodes for j in G.nodes if i != j )
 
-# add constraints saying that node i can receive flow of type j 
-#   only if node i is assigned to node j
+# node i can receive flow of type j iff node i is assigned to node j
 M = G.number_of_nodes() - 1
 m.addConstrs( gp.quicksum( f[u,i,j] for u in G.neighbors(i) ) <= M * x[i,j] for i in G.nodes for j in G.nodes if i != j )
 
-# add constraints saying that node j cannot receive flow of its own type
+# node j cannot receive flow of its own type (cannot use up its own supply)
 m.addConstrs( gp.quicksum( f[u,j,j] for u in G.neighbors(j) ) == 0 for j in G.nodes )
 
-m.update()
-
-# solve, making sure to set a 0.00% MIP gap tolerance
+#there are no gaps in between districts
+#(each county is assigned and all districts directly border each other. No Switzerlands)
 m.Params.MIPGap = 0.0
 
 m.optimize()
-
-# print the objective value
-print(m.objVal)
 
 # retrieve the districts and their populations
 #    but first get the district "centers"
@@ -107,8 +117,9 @@ for j in range(k):
     print("District",j,"has population",district_populations[j],"and contains counties",district_counties[j])
     print("")
 
-filepath = 'districting-data\\'
-filename = 'OK_county.shp'
+######### MAP CONSTRUCTION #########
+filepath = 'pop_data\\'
+filename = 'NE_county.shp'
 
 # Read geopandas dataframe from file
 df = gpd.read_file( filepath + filename )
