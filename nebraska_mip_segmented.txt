@@ -5,7 +5,7 @@ CPU model: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz, instruction set [SSE2|AVX|A
 Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
 
 Optimize a model with 26134 rows, 51615 columns and 188238 nonzeros
-Model fingerprint: 0x3d2cb812
+Model fingerprint: 0xc96b8c65
 Variable types: 42966 continuous, 8649 integer (8649 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 7e+05]
@@ -15,10 +15,10 @@ Coefficient statistics:
 Warning: Model contains large objective coefficients
          Consider reformulating model or setting NumericFocus parameter
          to avoid numerical issues.
-Presolve removed 292 rows and 663 columns
-Presolve time: 0.62s
-Presolved: 25842 rows, 50952 columns, 186735 nonzeros
-Variable types: 42308 continuous, 8644 integer (8644 binary)
+Presolve removed 293 rows and 671 columns
+Presolve time: 0.70s
+Presolved: 25841 rows, 50944 columns, 186728 nonzeros
+Variable types: 42300 continuous, 8644 integer (8644 binary)
 Deterministic concurrent LP optimizer: primal and dual simplex
 Showing first log only...
 
@@ -26,46 +26,71 @@ Concurrent spin time: 0.00s
 
 Solved with dual simplex
 
-Root relaxation: objective 8.857417e+09, 5763 iterations, 2.07 seconds (1.82 work units)
+Root relaxation: objective 8.899077e+09, 4811 iterations, 2.13 seconds (1.46 work units)
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-     0     0 8.8574e+09    0    4          - 8.8574e+09      -     -    3s
-H    0     0                    9.014246e+09 8.8574e+09  1.74%     -    4s
-H    0     0                    8.946357e+09 8.8574e+09  0.99%     -    4s
-     0     0 8.8828e+09    0   10 8.9464e+09 8.8828e+09  0.71%     -    5s
-     0     0 8.8828e+09    0    4 8.9464e+09 8.8828e+09  0.71%     -    5s
-     0     0 8.8828e+09    0    8 8.9464e+09 8.8828e+09  0.71%     -    5s
-     0     0 8.8828e+09    0   10 8.9464e+09 8.8828e+09  0.71%     -    5s
-     0     0 8.8943e+09    0   45 8.9464e+09 8.8943e+09  0.58%     -    5s
-     0     0 8.9025e+09    0   14 8.9464e+09 8.9025e+09  0.49%     -    5s
-     0     0 8.9030e+09    0   42 8.9464e+09 8.9030e+09  0.48%     -    5s
-     0     0 8.9032e+09    0   42 8.9464e+09 8.9032e+09  0.48%     -    5s
-     0     0 8.9033e+09    0   12 8.9464e+09 8.9033e+09  0.48%     -    5s
-     0     0 8.9052e+09    0   12 8.9464e+09 8.9052e+09  0.46%     -    5s
-     0     0 8.9123e+09    0   14 8.9464e+09 8.9123e+09  0.38%     -    5s
+     0     0 8.8991e+09    0    4          - 8.8991e+09      -     -    3s
+     0     0 8.9195e+09    0   10          - 8.9195e+09      -     -    4s
+H    0     0                    9.096249e+09 8.9253e+09  1.88%     -    5s
+     0     0 8.9253e+09    0   12 9.0962e+09 8.9253e+09  1.88%     -    5s
+     0     0 8.9275e+09    0   20 9.0962e+09 8.9275e+09  1.86%     -    5s
+     0     0 8.9491e+09    0   20 9.0962e+09 8.9491e+09  1.62%     -    6s
+     0     0 8.9491e+09    0    4 9.0962e+09 8.9491e+09  1.62%     -    7s
+     0     0 8.9491e+09    0   20 9.0962e+09 8.9491e+09  1.62%     -    7s
+H    0     0                    9.024513e+09 8.9491e+09  0.84%     -    7s
+     0     0 8.9491e+09    0   16 9.0245e+09 8.9491e+09  0.84%     -    7s
+     0     0 8.9491e+09    0   16 9.0245e+09 8.9491e+09  0.84%     -    7s
+     0     0 8.9507e+09    0   20 9.0245e+09 8.9507e+09  0.82%     -    7s
+     0     0 8.9550e+09    0   28 9.0245e+09 8.9550e+09  0.77%     -    7s
+     0     0 8.9550e+09    0    4 9.0245e+09 8.9550e+09  0.77%     -    7s
+     0     0 8.9550e+09    0   10 9.0245e+09 8.9550e+09  0.77%     -    7s
+     0     0 8.9550e+09    0   22 9.0245e+09 8.9550e+09  0.77%     -    7s
+H    0     0                    9.022799e+09 8.9550e+09  0.75%     -    7s
+     0     0 8.9550e+09    0   24 9.0228e+09 8.9550e+09  0.75%     -    7s
+     0     0 8.9550e+09    0   26 9.0228e+09 8.9550e+09  0.75%     -    7s
+     0     0 8.9550e+09    0   28 9.0228e+09 8.9550e+09  0.75%     -    7s
+     0     0 8.9550e+09    0   28 9.0228e+09 8.9550e+09  0.75%     -    7s
+H    0     0                    9.013006e+09 8.9550e+09  0.64%     -    7s
+     0     0 8.9624e+09    0   49 9.0130e+09 8.9624e+09  0.56%     -    7s
+     0     0 8.9624e+09    0    4 9.0130e+09 8.9624e+09  0.56%     -    7s
+     0     0 8.9624e+09    0   27 9.0130e+09 8.9624e+09  0.56%     -    7s
+     0     0 8.9646e+09    0   33 9.0130e+09 8.9646e+09  0.54%     -    7s
+     0     0 8.9651e+09    0   39 9.0130e+09 8.9651e+09  0.53%     -    7s
+     0     0 8.9653e+09    0   41 9.0130e+09 8.9653e+09  0.53%     -    7s
+     0     0 8.9696e+09    0   41 9.0130e+09 8.9696e+09  0.48%     -    7s
+     0     0 8.9705e+09    0   40 9.0130e+09 8.9705e+09  0.47%     -    7s
+     0     0 8.9706e+09    0   40 9.0130e+09 8.9706e+09  0.47%     -    7s
+     0     0 8.9731e+09    0   23 9.0130e+09 8.9731e+09  0.44%     -    7s
+     0     0 8.9737e+09    0   23 9.0130e+09 8.9737e+09  0.44%     -    7s
+     0     0 8.9748e+09    0   23 9.0130e+09 8.9748e+09  0.42%     -    7s
+     0     0 8.9748e+09    0   23 9.0130e+09 8.9748e+09  0.42%     -    7s
+     0     0 8.9752e+09    0   25 9.0130e+09 8.9752e+09  0.42%     -    7s
+     0     0 9.0008e+09    0   25 9.0130e+09 9.0008e+09  0.13%     -    7s
+     0     0 9.0130e+09    0   12 9.0130e+09 9.0130e+09  0.00%     -    7s
 
 Cutting planes:
-  Cover: 1
-  Clique: 1
-  MIR: 3
-  StrongCG: 2
-  Flow cover: 18
+  Gomory: 2
+  Cover: 4
+  MIR: 10
+  StrongCG: 4
+  Flow cover: 17
   GUB cover: 1
-  Network: 4
+  Network: 2
   RLT: 1
+  Relax-and-lift: 1
 
-Explored 1 nodes (6121 simplex iterations) in 5.62 seconds (3.72 work units)
+Explored 1 nodes (6664 simplex iterations) in 7.95 seconds (4.03 work units)
 Thread count was 12 (of 12 available processors)
 
-Solution count 2: 8.94636e+09 9.01425e+09 
+Solution count 4: 9.01301e+09 9.0228e+09 9.02451e+09 9.09625e+09 
 
 Optimal solution found (tolerance 0.00e+00)
-Best objective 8.946357140331e+09, best bound 8.946357140331e+09, gap 0.0000%
-District 0 has population 647400 and contains counties ['Sioux', 'Lincoln', 'Sherman', 'Logan', 'Merrick', 'Sheridan', 'Grant', 'Blaine', 'Stanton', 'Wheeler', 'Franklin', 'Chase', 'Buffalo', 'Fillmore', 'York', 'Seward', 'Clay', 'Cheyenne', 'Garden', 'Harlan', 'Hooker', 'Furnas', 'Howard', 'Valley', 'Thayer', 'Deuel', 'Morrill', 'Hall', 'Hamilton', 'Loup', 'Frontier', 'Nance', 'Knox', 'Perkins', 'Colfax', 'Butler', 'Cherry', 'Cuming', 'Nuckolls', 'Keith', 'Phelps', 'Webster', 'Boyd', 'Thomas', 'Holt', 'Brown', 'Keya Paha', 'Banner', 'Greeley', 'Jefferson', 'Saline', 'Dundy', 'Scotts Bluff', 'Adams', 'Kearney', 'Hitchcock', 'Kimball', 'Custer', 'Polk', 'Dawes', 'Wayne', 'Garfield', 'Pierce', 'Platte', 'Box Butte', 'Boone', 'Madison', 'McPherson', 'Red Willow', 'Rock', 'Gosper', 'Dawson', 'Arthur', 'Hayes', 'Antelope']
+Best objective 9.013005619398e+09, best bound 9.013005619398e+09, gap 0.0000%
+District 0 has population 651067 and contains counties ['Sioux', 'Lincoln', 'Sherman', 'Logan', 'Merrick', 'Sheridan', 'Grant', 'Blaine', 'Dixon', 'Stanton', 'Wheeler', 'Franklin', 'Chase', 'Buffalo', 'Fillmore', 'York', 'Clay', 'Cheyenne', 'Garden', 'Harlan', 'Hooker', 'Furnas', 'Howard', 'Valley', 'Cedar', 'Thayer', 'Deuel', 'Morrill', 'Hall', 'Hamilton', 'Loup', 'Frontier', 'Nance', 'Knox', 'Perkins', 'Colfax', 'Butler', 'Cherry', 'Cuming', 'Nuckolls', 'Keith', 'Phelps', 'Webster', 'Dakota', 'Boyd', 'Thomas', 'Holt', 'Brown', 'Keya Paha', 'Banner', 'Greeley', 'Jefferson', 'Dundy', 'Scotts Bluff', 'Adams', 'Kearney', 'Hitchcock', 'Kimball', 'Custer', 'Polk', 'Dawes', 'Wayne', 'Garfield', 'Pierce', 'Platte', 'Box Butte', 'Boone', 'Madison', 'McPherson', 'Red Willow', 'Rock', 'Gosper', 'Dawson', 'Arthur', 'Hayes', 'Antelope']
 
-District 1 has population 659650 and contains counties ['Pawnee', 'Sarpy', 'Saunders', 'Dodge', 'Richardson', 'Lancaster', 'Otoe', 'Nemaha', 'Cass', 'Gage', 'Johnson']
+District 1 has population 654384 and contains counties ['Pawnee', 'Sarpy', 'Saunders', 'Seward', 'Richardson', 'Lancaster', 'Saline', 'Otoe', 'Nemaha', 'Cass', 'Gage', 'Johnson']
 
-District 2 has population 654454 and contains counties ['Burt', 'Dixon', 'Washington', 'Cedar', 'Dakota', 'Douglas', 'Thurston']
+District 2 has population 656053 and contains counties ['Burt', 'Dodge', 'Washington', 'Douglas', 'Thurston']
 
