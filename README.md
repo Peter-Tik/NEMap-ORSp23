@@ -4,7 +4,7 @@
 
 #### About
 
-This repository is for Team PLS in Dr. Buchanan's Spring 2023 Operations Research class. For our final project, we formulated an IP to re-apportion Nebraska's congressional districts using gurobi, NetworkX, and Gerrychain, with data visualization done with geopandas.
+This repository is for Team PLS in Dr. Buchanan's Spring 2023 Operations Research class. For our final project, we formulated an IP to re-apportion Nebraska's congressional districts.
 
 In this repo, you will find our final project report and model code as both a standard python script and a Jupyter Notebook. Please see the findings of the [final report](https://github.com/Peter-Tik/NEMap-ORSp23/blob/main/report.pdf) for an in-depth dissection of our model selection, along with a summary detailing the legal & political criteria we accounted for in the model.
 
