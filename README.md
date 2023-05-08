@@ -2,8 +2,16 @@
 
 ### *Spring 2023 -- Redistricting the state of Nebraska*
 
-This is the repository for Team PLS in Dr. Buchanan's Spring 2023 Operations Research class. For our final project, we formulated an IP to re-apportion Nebraska's congressional districts using gurobi, NetworkX, and Gerrychain, with data visualization done with geopandas.
+#### About
 
-In this repo, you will find our final project report and Jupyter notebook containing the code for the IP. Please see the findings of the final report for an in-depth dissection of our model selection, along with a summary detailing the legal & political criteria we accounted for in the model.
+This repository is for Team PLS in Dr. Buchanan's Spring 2023 Operations Research class. For our final project, we formulated an IP to re-apportion Nebraska's congressional districts using gurobi, NetworkX, and Gerrychain, with data visualization done with geopandas.
 
-##### **Authored by Savannah Blasi, Lindsay Sanford, and Peter Tikalsky. Oklahoma State University, 2023**
+In this repo, you will find our final project report and model code as both a standard python script and a Jupyter Notebook. Please see the findings of the [final report](https://github.com/Peter-Tik/NEMap-ORSp23/blob/main/report.pdf) for an in-depth dissection of our model selection, along with a summary detailing the legal & political criteria we accounted for in the model.
+
+#### Dependencies
+
+This code is designed to work in Jupyter Notebook or python on version 4.12.0 of Anaconda. Dependencies needed are gurobipy, NetworkX, Gerrychain, geopy, and geopandas. Python version is 3.9.12, but any kernel 3+ should be fine so long as all other dependencies are installed properly.
+
+This is the only release. There will be no updates as of me writing this.
+
+##### **Authored by Savannah Blasi, Lindsay Sanford, and Peter Tikalsky. Codebase provided by Dr. Austin Buchanan. Oklahoma State University, 2023**
