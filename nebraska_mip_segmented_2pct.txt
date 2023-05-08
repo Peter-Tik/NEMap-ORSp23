@@ -1,0 +1,71 @@
+Set parameter MIPGap to value 0
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (win64)
+
+CPU model: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+
+Optimize a model with 26134 rows, 51615 columns and 188238 nonzeros
+Model fingerprint: 0x3d2cb812
+Variable types: 42966 continuous, 8649 integer (8649 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 7e+05]
+  Objective range  [1e+05, 9e+10]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+00]
+Warning: Model contains large objective coefficients
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 292 rows and 663 columns
+Presolve time: 0.86s
+Presolved: 25842 rows, 50952 columns, 186735 nonzeros
+Variable types: 42308 continuous, 8644 integer (8644 binary)
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing first log only...
+
+Concurrent spin time: 0.00s
+
+Solved with dual simplex
+
+Root relaxation: objective 8.857417e+09, 5763 iterations, 2.40 seconds (1.82 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 8.8574e+09    0    4          - 8.8574e+09      -     -    3s
+H    0     0                    9.014246e+09 8.8574e+09  1.74%     -    5s
+H    0     0                    8.946357e+09 8.8574e+09  0.99%     -    5s
+     0     0 8.8828e+09    0   10 8.9464e+09 8.8828e+09  0.71%     -    5s
+     0     0 8.8828e+09    0    4 8.9464e+09 8.8828e+09  0.71%     -    6s
+     0     0 8.8828e+09    0    8 8.9464e+09 8.8828e+09  0.71%     -    6s
+     0     0 8.8828e+09    0   10 8.9464e+09 8.8828e+09  0.71%     -    6s
+     0     0 8.8943e+09    0   45 8.9464e+09 8.8943e+09  0.58%     -    6s
+     0     0 8.9025e+09    0   14 8.9464e+09 8.9025e+09  0.49%     -    6s
+     0     0 8.9030e+09    0   42 8.9464e+09 8.9030e+09  0.48%     -    6s
+     0     0 8.9032e+09    0   42 8.9464e+09 8.9032e+09  0.48%     -    6s
+     0     0 8.9033e+09    0   12 8.9464e+09 8.9033e+09  0.48%     -    6s
+     0     0 8.9052e+09    0   12 8.9464e+09 8.9052e+09  0.46%     -    6s
+     0     0 8.9123e+09    0   14 8.9464e+09 8.9123e+09  0.38%     -    6s
+
+Cutting planes:
+  Cover: 1
+  Clique: 1
+  MIR: 3
+  StrongCG: 2
+  Flow cover: 18
+  GUB cover: 1
+  Network: 4
+  RLT: 1
+
+Explored 1 nodes (6121 simplex iterations) in 6.67 seconds (3.72 work units)
+Thread count was 12 (of 12 available processors)
+
+Solution count 2: 8.94636e+09 9.01425e+09 
+
+Optimal solution found (tolerance 0.00e+00)
+Best objective 8.946357140331e+09, best bound 8.946357140331e+09, gap 0.0000%
+District 0 has population 647400 and contains counties ['Sioux', 'Lincoln', 'Sherman', 'Logan', 'Merrick', 'Sheridan', 'Grant', 'Blaine', 'Stanton', 'Wheeler', 'Franklin', 'Chase', 'Buffalo', 'Fillmore', 'York', 'Seward', 'Clay', 'Cheyenne', 'Garden', 'Harlan', 'Hooker', 'Furnas', 'Howard', 'Valley', 'Thayer', 'Deuel', 'Morrill', 'Hall', 'Hamilton', 'Loup', 'Frontier', 'Nance', 'Knox', 'Perkins', 'Colfax', 'Butler', 'Cherry', 'Cuming', 'Nuckolls', 'Keith', 'Phelps', 'Webster', 'Boyd', 'Thomas', 'Holt', 'Brown', 'Keya Paha', 'Banner', 'Greeley', 'Jefferson', 'Saline', 'Dundy', 'Scotts Bluff', 'Adams', 'Kearney', 'Hitchcock', 'Kimball', 'Custer', 'Polk', 'Dawes', 'Wayne', 'Garfield', 'Pierce', 'Platte', 'Box Butte', 'Boone', 'Madison', 'McPherson', 'Red Willow', 'Rock', 'Gosper', 'Dawson', 'Arthur', 'Hayes', 'Antelope']
+
+District 1 has population 659650 and contains counties ['Pawnee', 'Sarpy', 'Saunders', 'Dodge', 'Richardson', 'Lancaster', 'Otoe', 'Nemaha', 'Cass', 'Gage', 'Johnson']
+
+District 2 has population 654454 and contains counties ['Burt', 'Dixon', 'Washington', 'Cedar', 'Dakota', 'Douglas', 'Thurston']
+
