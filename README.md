@@ -12,6 +12,8 @@ In this repo, you will find our final project report and model code as both a st
 
 This code is designed to work in Jupyter Notebook or python on version 4.12.0 of Anaconda. Dependencies needed are gurobipy, NetworkX, Gerrychain, geopy, and geopandas. Python version is 3.9.12, but any kernel 3+ should be fine so long as all other dependencies are installed properly.
 
-This is the only release. There will be no updates as of me writing this.
+This is the only release. There will be no updates as of me writing this. goodbye.
+
+![Jacques Cousteau patting a crab on its shell in a kind way](/results/crab-crab-petting.gif "jacques and a friend")
 
 ##### **Authored by Savannah Blasi, Lindsay Sanford, and Peter Tikalsky. Codebase provided by Dr. Austin Buchanan. Oklahoma State University, 2023**
